@@ -1,72 +1,55 @@
 'use strict';
 
-var ipc = require('ipc');
-var remote = require('remote');
-var Tray = remote.require('tray');
-var Menu = remote.require('menu');
-var path = require('path');
+//const ipc = require('ipc');
 
-var soundButtons = document.querySelectorAll('.button-sound');
-var closeEl = document.querySelector('.close');
-var settingsEl = document.querySelector('.settings');
+let btnarea = document.querySelector('.btns-con');
+let tempresult="0",tempcal="",caltype="",tempNum1;
+let tempresultNode = document.querySelector('.tempresult');
+let tempcalNode = document.querySelector('.tempcal');
+let calFlag = false; //是否已经计算过
+let calType=""; //计算类型
 
-var trayIcon = null;
-var trayMenu = null;
+function handleCal(type){
+    tempNum1 = parseFloat(tempresult);
+    calType = type;    
 
-for (var i = 0; i < soundButtons.length; i++) {
-    var soundButton = soundButtons[i];
-    var soundName = soundButton.attributes['data-sound'].value;
-
-    prepareButton(soundButton, soundName);
-}
-
-function prepareButton(buttonEl, soundName) {
-    buttonEl.querySelector('span').style.backgroundImage = 'url("img/icons/' + soundName + '.png")';
-
-    var audio = new Audio(__dirname + '/wav/' + soundName + '.wav');
-    buttonEl.addEventListener('click', function () {
-        audio.currentTime = 0;
-        audio.play();
-    });
-}
-
-closeEl.addEventListener('click', function () {
-    ipc.send('close-main-window');
-});
-
-settingsEl.addEventListener('click', function () {
-    ipc.send('open-settings-window');
-});
-
-ipc.on('global-shortcut', function (arg) {
-    var event = new MouseEvent('click');
-    soundButtons[arg].dispatchEvent(event);
-});
-
-if (process.platform === 'darwin') {
-    trayIcon = new Tray(path.join(__dirname, 'img/tray-iconTemplate.png'));
-}
-else {
-    trayIcon = new Tray(path.join(__dirname, 'img/tray-icon-alt.png'));
-}
-
-var trayMenuTemplate = [
-    {
-        label: 'Sound machine',
-        enabled: false
-    },
-    {
-        label: 'Settings',
-        click: function () {
-            ipc.send('open-settings-window');
-        }
-    },
-    {
-        label: 'Quit',
-        click: function () {
-            ipc.send('close-main-window');
-        }
+    switch(type){
+        case "+": tempcal = tempresult+ " +";break;
+        case "-": tempcal = tempresult+ " -";break;
+        case "*": tempcal = tempresult+ " *";break;
+        case "/": tempcal = tempresult+ " /";break;
     }
-];
-trayMenu = Menu.buildFromTemplate(trayMenuTemplate);
-trayIcon.setContextMenu(trayMenu);
+    tempresult = "0";
+}
+
+function getResult(){
+    let result=0;
+    let curNum = tempresult;
+    switch(calType){
+        case "+": result = tempNum1 + parseFloat(curNum); break;
+        case "-":result = tempNum1 - parseFloat(curNum); break;
+        case "*": result = tempNum1 * parseFloat(curNum); break;
+        case "/": result = tempNum1 / parseFloat(curNum); break;
+    }
+    calFlag = true;
+    return result;
+}
+
+btnarea.addEventListener('click', function (e) {
+    let btn = e.target;
+    let ntype = btn.getAttribute("data-type");
+    let nval = btn.getAttribute("data-val");
+    switch(ntype){
+        case "num": if(calFlag){tempresult = "0";calFlag=false;} tempresult = tempresult == "0" ? nval : tempresult + nval;break;
+        case "point":   if(tempresult.indexOf(".") == -1){
+                            tempresult += nval;
+                            calFlag=false;
+                        } 
+                        break;
+        case "cal": handleCal(nval);break;
+        case "result": tempresult = getResult(nval);tempcal="";break;
+    }
+    tempresult += "";
+    tempresultNode.innerHTML = tempresult;
+    tempcalNode.innerHTML = tempcal;
+});

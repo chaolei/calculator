@@ -2,26 +2,22 @@
 
 var app = require('app');
 var BrowserWindow = require('browser-window');
-var globalShortcut = require('global-shortcut');
-var configuration = require('./configuration');
 var ipc = require('ipc');
 
 var mainWindow = null;
 var settingsWindow = null;
 
 app.on('ready', function() {
-    if (!configuration.readSettings('shortcutKeys')) {
-        configuration.saveSettings('shortcutKeys', ['ctrl', 'shift']);
-    }
 
     mainWindow = new BrowserWindow({
         frame: true,
-        height: 322,
+        height: 290,
         resizable: false,
         width: 228
     });
 
     mainWindow.loadUrl('file://' + __dirname + '/app/index.html');
+    mainWindow.webContents.openDevTools();
 });
 
 ipc.on('close-main-window', function () {
@@ -51,8 +47,4 @@ ipc.on('close-settings-window', function () {
     if (settingsWindow) {
         settingsWindow.close();
     }
-});
-
-ipc.on('set-global-shortcuts', function () {
-    setGlobalShortcuts();
 });

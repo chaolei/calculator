@@ -1,115 +1,65 @@
-<!doctype html>
+<!Doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Sound Machine</title>
-    <link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculator</title>
     <link href="css/index.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
-<div class="settings">Settings</div>
-<div class="close">Close</div>
-<div id="main" class="container-fluid">
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="speaker">
-                <img src="img/speaker.png"/>
-            </div>
-            <h1>
-                <img src="img/logo.png"/>
-            </h1>
+    <div id="main" class="container">
+        <div class="result">
+            <div class="tempcal"></div>
+            <div class="tempresult">0</div>
         </div>
-    </div>
-    <div class="row buttons">
-        <div class="col-xs-3">
-            <div class="button-sound" data-sound="ba-dum-tsss">
-                <span class="button-icon"></span>
+        <div class="btns-con">
+            <div class="btns">
+                <div class="btn"></div>
+                <div class="btn">CE</div>
+                <div class="btn">C</div>
+                <div class="btn">+</div>
+                <div class="btn"></div>
             </div>
-        </div>
-        <div class="col-xs-3">
-            <div class="button-sound" data-sound="money">
-                <span class="button-icon"></span>
+            <div class="btns">
+                <div class="btn num" data-type="num" data-val="7">7</div>
+                <div class="btn num" data-type="num" data-val="8">8</div>
+                <div class="btn num" data-type="num" data-val="9">9</div>
+                <div class="btn" data-type="cal" data-val="/">/</div>
+                <div class="btn" data-type="cal" data-val="%">%</div>
             </div>
-        </div>
-        <div class="col-xs-3">
-            <div class="button-sound" data-sound="ba-dum-tsss">
-                <span class="button-icon"></span>
+            <div class="btns">
+                <div class="btn num" data-type="num" data-val="4">4</div>
+                <div class="btn num" data-type="num" data-val="5">5</div>
+                <div class="btn num" data-type="num" data-val="6">6</div>
+                <div class="btn" data-type="cal" data-val="*">*</div>
+                <div class="btn">1/x</div>
             </div>
-        </div>
-        <div class="col-xs-3">
-            <div class="button-sound" data-sound="money">
-                <span class="button-icon"></span>
-            </div>
-        </div>
-    </div>
-    <div class="row buttons">
-        <div class="col-xs-3">
-            <div class="button-sound" data-sound="ba-dum-tsss">
-                <span class="button-icon"></span>
-            </div>
-        </div>
-        <div class="col-xs-3">
-            <div class="button-sound" data-sound="money">
-                <span class="button-icon"></span>
-            </div>
-        </div>
-        <div class="col-xs-3">
-            <div class="button-sound" data-sound="ba-dum-tsss">
-                <span class="button-icon"></span>
-            </div>
-        </div>
-        <div class="col-xs-3">
-            <div class="button-sound" data-sound="money">
-                <span class="button-icon"></span>
+            <div class="btns">
+                <div class="btnleft">
+                    <div class="btns">
+                        <div class="btn num" data-type="num" data-val="1">1</div>
+                        <div class="btn num" data-type="num" data-val="2">2</div>
+                        <div class="btn num" data-type="num" data-val="3">3</div>
+                        <div class="btn" data-type="cal" data-val="-">-</div>
+                    </div>
+                    <div class="btns">
+                        <div class="btnbot">
+                            <div class="btn spe1 num" data-type="num" data-val="0">0</div>
+                        </div>
+                        <div class="btnbot">
+                            <div class="btn" data-type="point" data-val=".">.</div>
+                            <div class="btn" data-type="cal" data-val="+">+</div>
+                        </div>
+                        
+                        
+                    </div>
+                </div>
+                <div class="btnright">
+                    <div class="btn spe2" data-type="result">=</div>
+                </div>
             </div>
         </div>
     </div>
-    <div class="row buttons">
-        <div class="col-xs-3">
-            <div class="button-sound" data-sound="ba-dum-tsss">
-                <span class="button-icon"></span>
-            </div>
-        </div>
-        <div class="col-xs-3">
-            <div class="button-sound" data-sound="money">
-                <span class="button-icon"></span>
-            </div>
-        </div>
-        <div class="col-xs-3">
-            <div class="button-sound" data-sound="ba-dum-tsss">
-                <span class="button-icon"></span>
-            </div>
-        </div>
-        <div class="col-xs-3">
-            <div class="button-sound" data-sound="money">
-                <span class="button-icon"></span>
-            </div>
-        </div>
-    </div>
-    <div class="row buttons">
-        <div class="col-xs-3">
-            <div class="button-sound" data-sound="ba-dum-tsss">
-                <span class="button-icon"></span>
-            </div>
-        </div>
-        <div class="col-xs-3">
-            <div class="button-sound" data-sound="money">
-                <span class="button-icon"></span>
-            </div>
-        </div>
-        <div class="col-xs-3">
-            <div class="button-sound" data-sound="ba-dum-tsss">
-                <span class="button-icon"></span>
-            </div>
-        </div>
-        <div class="col-xs-3">
-            <div class="button-sound" data-sound="money">
-                <span class="button-icon"></span>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script src="js/index.js"></script>
+    <script src="js/index.js"></script>
 </body>
 </html>
