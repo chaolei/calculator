@@ -15,30 +15,14 @@ app.on('ready', function() {
     }
 
     mainWindow = new BrowserWindow({
-        frame: false,
-        height: 700,
+        frame: true,
+        height: 322,
         resizable: false,
-        width: 368
+        width: 228
     });
 
     mainWindow.loadUrl('file://' + __dirname + '/app/index.html');
-
-    setGlobalShortcuts();
 });
-
-function setGlobalShortcuts() {
-    globalShortcut.unregisterAll();
-
-    var shortcutKeysSetting = configuration.readSettings('shortcutKeys');
-    var shortcutPrefix = shortcutKeysSetting.length === 0 ? '' : shortcutKeysSetting.join('+') + '+';
-
-    globalShortcut.register(shortcutPrefix + '1', function () {
-        mainWindow.webContents.send('global-shortcut', 0);
-    });
-    globalShortcut.register(shortcutPrefix + '2', function () {
-        mainWindow.webContents.send('global-shortcut', 1);
-    });
-}
 
 ipc.on('close-main-window', function () {
     app.quit();
