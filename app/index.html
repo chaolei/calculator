@@ -7,6 +7,9 @@
     <link href="css/index.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
+    <div class="toolbar">
+        <span class="about">关于</span>
+    </div>
     <div id="main" class="container">
         <div class="result">
             <div class="tempcal"></div>
@@ -14,11 +17,11 @@
         </div>
         <div class="btns-con">
             <div class="btns">
-                <div class="btn"></div>
-                <div class="btn">CE</div>
-                <div class="btn">C</div>
-                <div class="btn">+</div>
-                <div class="btn"></div>
+                <div class="btn back" data-type="clear" data-val=""><div>→</div></div>
+                <div class="btn" data-type="clear" data-val="">CE</div>
+                <div class="btn" data-type="clear" data-val="">C</div>
+                <div class="btn" data-type="cal" data-val="invert">±</div>
+                <div class="btn" data-type="cal" data-val="sqrt">√</div>
             </div>
             <div class="btns">
                 <div class="btn num" data-type="num" data-val="7">7</div>
@@ -32,7 +35,7 @@
                 <div class="btn num" data-type="num" data-val="5">5</div>
                 <div class="btn num" data-type="num" data-val="6">6</div>
                 <div class="btn" data-type="cal" data-val="*">*</div>
-                <div class="btn">1/x</div>
+                <div class="btn" data-type="cal" data-val="reciproc">1/x</div>
             </div>
             <div class="btns">
                 <div class="btnleft">
@@ -47,7 +50,7 @@
                             <div class="btn spe1 num" data-type="num" data-val="0">0</div>
                         </div>
                         <div class="btnbot">
-                            <div class="btn" data-type="point" data-val=".">.</div>
+                            <div class="btn num" data-type="point" data-val=".">.</div>
                             <div class="btn" data-type="cal" data-val="+">+</div>
                         </div>
                         

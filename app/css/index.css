@@ -5,6 +5,23 @@ body{
 .container{
     padding: 10px;
 }
+.toolbar{
+    line-height: 25px;    
+    background: linear-gradient(#FEFEFF,#E0E5F5);
+    border-bottom: 1px solid #B6BCCC;
+    font-size: 13px;
+    padding-left: 3px;
+}
+.about{
+    padding: 0px 7px;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    cursor: default;
+}
+.about:hover{
+    border-color: #8E9CAD;
+    background: linear-gradient(#F0F6FB,#EDF3F8,#E7EDF5,#DBE6F0);
+}
 .result{
     text-align: right;
     padding-right: 5px;
@@ -15,13 +32,14 @@ body{
 }
 .tempcal{
     line-height: 20px;
-    font-size: 13px;
+    font-size: 12px;
     height: 20px;
 }
 .tempresult{
     line-height: 30px;
     font-size: 15px;
     height: 30px;
+    font-size: 18px;
 }
 .btns-con{
     margin-right: -5px;
@@ -41,10 +59,16 @@ body{
     background: linear-gradient(#F0F6FB,#EDF3F8,#E7EDF5,#DBE6F0);
     cursor: default;
 }
+.num{
+    background: linear-gradient(#F7FBFF,#EDF3F8,#E8EEF5,#F2FBFF);
+}
 .btn.spe2{
     line-height: 57px;
     font-size: 20px;
     font-weight: bold;
+}
+.back >div{
+    transform: rotate(180deg);
 }
 .btnbot{
     flex: 1;

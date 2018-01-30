@@ -1,50 +1,39 @@
 'use strict';
 
-var app = require('app');
-var BrowserWindow = require('browser-window');
-var ipc = require('ipc');
+let app = require('app');
+let BrowserWindow = require('browser-window');
 
-var mainWindow = null;
-var settingsWindow = null;
-
+let mainWindow = null;
+let aboutWindow = null;
+let ipc = require('ipc');
 app.on('ready', function() {
 
     mainWindow = new BrowserWindow({
         frame: true,
-        height: 290,
+        height: 320,
         resizable: false,
         width: 228
     });
 
     mainWindow.loadUrl('file://' + __dirname + '/app/index.html');
-    mainWindow.webContents.openDevTools();
+    //mainWindow.webContents.openDevTools();
 });
 
-ipc.on('close-main-window', function () {
-    app.quit();
-});
-
-ipc.on('open-settings-window', function () {
-    if (settingsWindow) {
+ipc.on('open-about-window', function () {
+    if (aboutWindow) {
         return;
     }
 
-    settingsWindow = new BrowserWindow({
-        frame: false,
+    aboutWindow = new BrowserWindow({
+        frame: true,
         height: 200,
         resizable: false,
-        width: 200
+        width: 300
     });
 
-    settingsWindow.loadUrl('file://' + __dirname + '/app/settings.html');
+    aboutWindow.loadUrl('file://' + __dirname + '/app/about.html');
 
-    settingsWindow.on('closed', function () {
-        settingsWindow = null;
+    aboutWindow.on('closed', function () {
+        aboutWindow = null;
     });
-});
-
-ipc.on('close-settings-window', function () {
-    if (settingsWindow) {
-        settingsWindow.close();
-    }
 });
