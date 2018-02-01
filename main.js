@@ -17,6 +17,11 @@ app.on('ready', function() {
     });
 
     mainWindow.loadUrl('file://' + __dirname + '/app/index.html');
+
+    mainWindow.on('closed', function () {
+        aboutWindow = null;
+        mainWindow = null;
+    });
     //mainWindow.webContents.openDevTools();
 });
 
