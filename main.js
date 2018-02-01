@@ -9,6 +9,7 @@ let ipc = require('ipc');
 app.on('ready', function() {
 
     mainWindow = new BrowserWindow({
+        title: '计算器',
         frame: true,
         height: 298,
         resizable: false,
@@ -26,6 +27,7 @@ ipc.on('open-about-window', function () {
 
     aboutWindow = new BrowserWindow({
         frame: true,
+        title: '关于计算器',
         height: 200,
         resizable: false,
         width: 300
