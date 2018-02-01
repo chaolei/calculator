@@ -10,7 +10,7 @@ app.on('ready', function() {
 
     mainWindow = new BrowserWindow({
         frame: true,
-        height: 320,
+        height: 298,
         resizable: false,
         width: 228
     });

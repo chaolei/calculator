@@ -1,6 +1,7 @@
 body,div,p,ul,li,span,table,tr,td{margin: 0;padding: 0;}
 body{
     background:linear-gradient(#EDF4FC,#D9E4F1);
+    overflow: hidden;
 }
 .container{
     padding: 10px;
